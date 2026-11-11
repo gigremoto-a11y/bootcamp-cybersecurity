@@ -1,4 +1,3 @@
-```markdown
 # Desafio de Projeto DIO: Simulação de Ataques de Força Bruta e Medidas de Prevenção
 
 Projeto prático desenvolvido para o bootcamp de cibersegurança, utilizando **Kali Linux** e ambientes vulneráveis (**Metasploitable 2** e **DVWA**) em ambiente controlado via VirtualBox.
@@ -32,18 +31,6 @@ Projeto prático desenvolvido para o bootcamp de cibersegurança, utilizando **K
   echo -e "user\nmsfadmin\nservice" > smb_users.txt
   echo -e "password\n123456\nWelcome123\nmsfadmin" > senhas_spray.txt
 
-```
-
-* **Comando Executado:**
-```bash
-medusa -h 192.168.56.101 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 50
-
-```
-
-* **Resultado:**
-* Credencial encontrada: `msfadmin` / `msfadmin`
-* **Privilégio:** Acesso permitido ao share administrativo (`ADMIN$ - Access Allowed`).
-
 ---
 
 ## 🛡️ Medidas de Mitigação e Recomendações
@@ -61,5 +48,3 @@ medusa -h 192.168.56.101 -U smb_users.txt -P senhas_spray.txt -M smbnt -t 2 -T 5
 * `pass.txt` / `senhas_spray.txt` — Wordlists de senhas.
 * `enum4linux.txt` — Log completo da enumeração SMB.
 * `/images` — Capturas de tela dos testes realizados.
-
-```
